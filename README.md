@@ -3,8 +3,8 @@
 # How to create BDDTests
 
 1. Create a project like usual.
-2. Create directory (module) - "features".
-3. Create file with name like this - "search.feature"
+2. Create directory (module) - ```features```.
+3. Create file with name like this - ```search.feature```
 4. Describe a test in created file, like this:
 ```
 Feature: Login Feature
@@ -21,20 +21,20 @@ Feature: Login Feature
         And I click on Login button
         Then I should get a proper warning message
 ```
-5. Install - "pip instal behave"
-6. In "features" directory (module), create directory (module) - "steps".
-7. In "steps" directory (module) create file with name like "search.py".
-8. Run command - "behave features". Copy from console text like this into the "search.py" file:
+5. Install behave module - ``pip instal behave``
+6. In ```features``` directory (module), create directory (module) - ```steps```.
+7. In ```steps``` directory (module) create file with name like ```search.py```.
+8. Run command - ```behave features```. Copy from console text like this into the ```search.py``` file:
 ```
 @given(u'I am on the Application Home page')
 def step_impl(context):
     raise NotImplementedError...
 ```
-9. Add into "search.py" file - "from behave import given, when, then".
-10. Change "raise NotImplementedError..." into "print('Inside - I am on the Application Home page')".
-11. Run command - "behave features" or "behave features/search.feature". All features, scenarious, steps should pass.
-12. Create file "environment.py" to centrilized hooks under "features" package.
-13. Add hooks into a file "environment.py" (functions that will run before and after each scenario, after each step).
+9. Add into ```search.py``` file - ```from behave import given, when, then``` or ```from behave import *```.
+10. Change ```raise NotImplementedError...``` into ```print('Inside - I am on the Application Home page')```.
+11. Run command - ```behave features``` or ```behave features/search.feature```. All features, scenarious, steps should pass.
+12. Create file ```environment.py``` to centrilized hooks under ```features``` package.
+13. Add hooks into a file ```environment.py``` (functions that will run before and after each scenario, after each step).
 ```
 from selenium import webdriver
 
@@ -48,7 +48,7 @@ def after_step(context, step):
     print('Inside - After Step')
     print()
 ```
-14. Create "behave.ini" file into a root project folder, with this code (this is enable print statements in console):
+14. Create ```behave.ini``` file into a root project folder, with this code (this is enable print statements in console):
 ```
 [behave]
 stdout_capture = false
@@ -98,7 +98,7 @@ Feature: Login Feature
             |test_auto@gmail.com    |12345      |
             |amotoorione@gmail.com  |secondone  |
 ```
-17. To specify tag by wich we can run our tests we shoul use "@" before the test name in "search.feature" file, like this:
+17. To specify tag by wich we can run our tests we shoul use ```@``` before the test name in ```search.feature``` file, like this:
 ```
     @login  @regression
     Scenario: Login with valid emain and invalid password
@@ -107,9 +107,9 @@ Feature: Login Feature
         And I click on Login button
         Then I should get a proper warning message
 ```
-18. To run only tests with some tags: "behave features --tags=search".
-19. To run all tests exept tests with some tag: "behave features --tags=-search".
-20. To run tests with multiple tags "behave features --tags=search --tags=regression".
+18. To run only tests with some tags: ```behave features --tags=search```.
+19. To run all tests exept tests with some tag: ```behave features --tags=-search```.
+20. To run tests with multiple tags ```behave features --tags=search --tags=regression```.
 21. To add Background (function that apply to all test scenarios in feature file - pre-request steps) - DRY principle.
 ```
 Feature: Search Feature
